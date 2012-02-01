@@ -35,11 +35,23 @@ var bslive = (function(less) {
 	}
 
 	function renderVariable(sheet, variable, variableMap) {
+
+		// Dirty type detection
+		var value = variableMap[variable];
+		var type  = '';
+		var cssClass = '';
+		if(value.substring(0,1) == '#') {
+			type = 'colour';
+			cssClass += 'color {hash:true,adjust:false}';
+		}
+
 		var html = '';
 		html += '<label>' + variable + '</label>';
 		html += '<input type="text" ';
+		html += 'class="' + cssClass + '" ';
 		html += 'value=\'' + variableMap[variable] + '\' ';
 		html += 'data-bsl-variable=\'' + variable + '\' ';
+		html += 'data-bsl-type=\'' + type + '\' ';
 		html += 'data-bsl-sheet="' + sheet + '" ';
 		html += 'onchange="bslive.inputChanged(this);" \/>';
 		return html;
@@ -79,7 +91,14 @@ var bslive = (function(less) {
 		inputChanged: function(input) {
 			var variable = input.getAttribute('data-bsl-variable');
 			var value 	 = input.value;
-			var sheet 	 = input.getAttribute('data-bsl-sheet');			
+			var sheet 	 = input.getAttribute('data-bsl-sheet');
+			var type	 = input.getAttribute('data-bsl-type');
+
+			// Prepend hash if it's a color.
+			if(type === 'colour') {
+				//value = '#' + value;
+			}
+
 			this.update(variable, value, sheet);
 		},
 
