@@ -3059,7 +3059,7 @@ less.refreshStyles = loadStyles;
 
 less.refresh(less.env === 'development');
 
-less.updateVariable = function(variable, value, sheetHref) {
+less.updateVariable = function(variable, value, sheetHrefId) {
     if(!cache) {
         console.error("Your browser must support the HTML localStorage API in order to dynamically change variables.");
     }
@@ -3071,20 +3071,20 @@ less.updateVariable = function(variable, value, sheetHref) {
             if(e !== null) {
                 error(e, '');
             } else {
-                updatedVariableParsed(variable, tree, sheetHref);
+                updatedVariableParsed(variable, tree, sheetHrefId);
                 less.refresh();
             }
         });
     } catch(e) { error(e, ''); }
 };
 
-function updatedVariableParsed(variable, parsed, sheetHref) {
-    console.log('updatedVariableParsed', variable, parsed, sheetHref);
+function updatedVariableParsed(variable, parsed, sheetHrefId) {
 
     // Iterate through each sheet and match if necessary.
     for(var i = 0; i < less.sheets.length; i++) {
         var href = less.sheets[i].href;
-        if(typeof(sheet) === 'undefined' || href == sheetHref) {
+        var hrefId = extractId(href);
+        if(typeof(sheet) === 'undefined' || hrefId == sheetHrefId) {
             // Find the variable inside this parsed sheet if possible.
             var parsedSheet = getParsedSheet(href, parsed);
 
@@ -3106,13 +3106,14 @@ function updatedVariableParsed(variable, parsed, sheetHref) {
 }
 
 function getParsedSheet(href) {
-    return less.parsed[href];
+    return less.parsed[extractId(href)];
 }
 
-less.getParsed = getParsedSheet; // Export get function.
+less.getParsed = getParsedSheet;    // Export get function.
+less.extractId = extractId;         // Export extract function.
 
 function setParsedSheet(href, parsed) {
-    less.parsed[href] = parsed;
+    less.parsed[extractId(href)] = parsed;
 }
 
 function getVariableHash(node) {
