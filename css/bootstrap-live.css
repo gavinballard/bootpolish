@@ -1,0 +1,17 @@
+#bootstrap-live {
+  
+  position: absolute;
+  bottom:   30px;
+  left:     30px;
+  top:      70px;
+  width:    300px;
+
+  background-color:   #eee;
+  opacity:            0.8;
+  overflow:           auto;
+  padding:            8px;
+
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
