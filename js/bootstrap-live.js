@@ -25,8 +25,8 @@ var bslive = (function(less) {
 
 		// Strip sheet name
 		var sheetName = sheet.substring(sheet.lastIndexOf('/'));
-		html += '<h3>' + sheetName + '</h3>';
-		html += '<form>';
+		html += '<h3 onclick="bslive.headerClicked(this);">' + sheetName + '</h3>';
+		html += '<form id="' + sheetName + '_form">';
 		for(variable in sheetMap[sheet]) {
 			html += renderVariable(sheet, variable, sheetMap[sheet]);
 		}
@@ -100,6 +100,14 @@ var bslive = (function(less) {
 			}
 
 			this.update(variable, value, sheet);
+		},
+
+		// Header was clicked. Toggle its form.
+		headerClicked: function(header) {
+			var widget = document.getElementById('bootstrap-live');
+			var form = document.getElementById(header.innerHTML + '_form');
+			form.style.display = (form.style.display != 'none' ? 'none' : '' );			
+			widget.style.opacity = (widget.style.opacity == 0.2) ? 0.8 : 0.2;
 		},
 
 		// Update a particular variable.

@@ -1,9 +1,9 @@
 #bootstrap-live {
   
-  position: absolute;
-  bottom:   30px;
-  left:     30px;
-  top:      70px;
+  position:   absolute;
+  left:       30px;
+  top:        70px;
+  max-height: 700px;
 
   background-color:   #eee;
   opacity:            0.8;
@@ -17,4 +17,9 @@
 
 #bootstrap-live input {
   cursor: pointer;
+}
+
+#bootstrap-live h3 {
+  cursor:           pointer;
+  text-decoration:  underline;
 }
