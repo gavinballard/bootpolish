@@ -13,14 +13,8 @@
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet/less" href="assets/less/bootstrap.less" />
+    <script type="text/javascript" src="assets/js/less-1.2.1.min.js"></script>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -87,22 +81,115 @@
 
     </div> <!-- /container -->
 
+
+    <div id="bootpolish-widget" class="modal">
+      <div class="modal-header">
+        <a class="close">&laquo;</a>
+        <h3>Bootpolish</h3>
+      </div>
+      <div class="modal-body accordion">
+      
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-links" data-parent="#bootpolish-widget">Links</a>
+          </div>
+          <div class="accordion-body collapse in" id="bootpolish-widget-links">
+            <div class="accordion-inner">
+              Links
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-colours" data-parent="#bootpolish-widget">Colours</a>
+          </div>
+          <div class="accordion-body collapse" id="bootpolish-widget-colours">
+            <div class="accordion-inner">
+              Colours
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-grid" data-parent="#bootpolish-widget">Grid</a>
+          </div>
+          <div class="accordion-body collapse" id="bootpolish-widget-grid">
+            <div class="accordion-inner">
+              Grid
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-typography" data-parent="#bootpolish-widget">Typography</a>
+          </div>
+          <div class="accordion-body collapse" id="bootpolish-widget-typography">
+            <div class="accordion-inner">
+              Typography
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-forms" data-parent="#bootpolish-widget">Forms</a>
+          </div>
+          <div class="accordion-body collapse" id="bootpolish-widget-forms">
+            <div class="accordion-inner">
+              Forms
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-navbar" data-parent="#bootpolish-widget">Navbar</a>
+          </div>
+          <div class="accordion-body collapse" id="bootpolish-widget-navbar">
+            <div class="accordion-inner">
+              Navbar
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-alerts" data-parent="#bootpolish-widget">Form States &amp; Alerts</a>
+          </div>
+          <div class="accordion-body collapse" id="bootpolish-widget-alerts">
+            <div class="accordion-inner">
+              Alerts
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" href="#" data-toggle="collapse" data-target="#bootpolish-widget-custom" data-parent="#bootpolish-widget">Custom</a>
+          </div>
+          <div class="accordion-body collapse" id="bootpolish-widget-custom">
+            <div class="accordion-inner">
+              Custom
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-large btn-primary">Generate LESS</button>
+        <button class="btn btn-large btn-danger">Reset</button>
+      </div>
+    </div>
+
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/bootpolish.js"></script>    
 
   </body>
 </html>

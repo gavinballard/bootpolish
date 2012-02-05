@@ -1,6 +1,73 @@
 /**
- * Bootstrap Live
+ * Bootpolish.
  */
+(function(window, $, less) {
+
+	var bootpolish = {};
+
+	/**
+	 * Initialise Bootpolish.
+	 */
+	bootpolish.initialise = function() {
+		var widget = $('#bootpolish-widget').css({
+			position: 	'fixed',
+			top: 		'50px',
+			left: 		'10px',
+			width: 		'350px',
+			maxHeight: 	'600px',
+			margin: 	0
+		});
+
+		// Set properties on the modal body.
+		widget.find('.modal-body').css({
+			maxHeight: 		'430px',
+			overflow: 		'auto',
+			marginBottom: 	0
+		});
+
+		// Set open / close functions.
+		widget.find('a.close:first').click(function(event) {
+			// Close.
+			if(this.innerHTML == '«') {
+				bootpolish.widget.css({
+					left: 		'-310px',
+					opacity: 	0.25
+				}).find('.modal-body,.modal-footer').hide();
+				this.innerHTML = '»';
+				return;
+			}
+
+			bootpolish.widget.css({
+				left: 			'30px',
+				opacity: 		1.0
+			}).find('.modal-body,.modal-footer').show();
+			this.innerHTML = '«';
+		});
+
+		// Attach the widget to the 
+		bootpolish.widget = widget;
+	};
+
+	/**
+	 * Set a variable to a particular value.
+	 * @param variable 	The name of the variable to set.
+	 * @param value 	The value.
+	 * @param sheet 	Optional. The href of the variable's sheet.
+	 *					If no sheet is specified, the variable will
+	 *					be set on all sheets in which it exists.
+	 */
+	bootpolish.set = function(variable, value, sheet) {
+		less.updateVariable(variable, value, sheet);
+	};
+
+	// Add bootpolish to window object.
+	window.bootpolish = bootpolish;
+})(window, window.jQuery, window.less);
+
+// Initialise bootpolish on document ready.
+$(document).ready(bootpolish.initialise);
+
+/**
 var bslive = (function(less) {
 
 	function getSheetVariables(sheetHrefId) {
@@ -110,13 +177,9 @@ var bslive = (function(less) {
 			widget.style.opacity = (widget.style.opacity == 0.2) ? 0.8 : 0.2;
 		},
 
-		// Update a particular variable.
-		update: function(variable, value, sheet) {
-			less.updateVariable(variable, value, sheet);
-		}
-
 	};
 }(less));
 
 // Trigger initialisation.
 bslive.initialise();
+**/

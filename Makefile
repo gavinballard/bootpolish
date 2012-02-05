@@ -6,9 +6,7 @@ bootpolish:
 	cp lib/less.js/less-1.2.1.js  dist/less-1.2.1.js
 	uglifyjs -nc dist/bootpolish.js > dist/bootpolish.min.js
 	uglifyjs -nc dist/less-1.2.1.js > dist/less-1.2.1.min.js
-	mkdir -p docs/assets/css
 	mkdir -p docs/assets/js
-	cp assets/css/* docs/assets/css
 	cp dist/* docs/assets/js
 
 # Update Bootstrap files (LESS and JS) to Bootstrap's latest master.
