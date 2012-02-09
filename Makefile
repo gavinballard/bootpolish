@@ -11,10 +11,11 @@ bootpolish:
 	mkdir -p docs/assets/css
 	cp css/* docs/assets/css
 
+# Build docs.
+docs: bootpolish
+	node docs/build
+
 # Update Bootstrap files (LESS and JS) to Bootstrap's latest master.
 # Requires the bootstrap repo to be checked out one level up.
 update:
-	cd ../bootstrap && git pull
-	make bootstrap && cd ../bootpolish
-	cp ../bootstrap/less/* docs/less/
-	cp ../bootstrap/bootstrap/js/* docs/assets/js/
+	cp -r ../bootstrap/less ./docs/assets/

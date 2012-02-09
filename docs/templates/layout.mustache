@@ -41,30 +41,30 @@
           <a class="brand" href="./index.html">Bootstrap</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active">
-                <a href="./index.html">Overview</a>
+              <li class="{{index}}">
+                <a href="./index.html">{{_i}}Overview{{/i}}</a>
               </li>
-              <li class="">
-                <a href="./scaffolding.html">Scaffolding</a>
+              <li class="{{scaffolding}}">
+                <a href="./scaffolding.html">{{_i}}Scaffolding{{/i}}</a>
               </li>
-              <li class="">
-                <a href="./base-css.html">Base CSS</a>
+              <li class="{{base-css}}">
+                <a href="./base-css.html">{{_i}}Base CSS{{/i}}</a>
               </li>
-              <li class="">
-                <a href="./components.html">Components</a>
+              <li class="{{components}}">
+                <a href="./components.html">{{_i}}Components{{/i}}</a>
               </li>
-              <li class="">
-                <a href="./javascript.html">Javascript plugins</a>
+              <li class="{{javascript}}">
+                <a href="./javascript.html">{{_i}}Javascript plugins{{/i}}</a>
               </li>
-              <li class="">
-                <a href="./less.html">Using LESS</a>
+              <li class="{{less}}">
+                <a href="./less.html">{{_i}}Using LESS{{/i}}</a>
               </li>
               <li class="divider-vertical"></li>
-              <li class="">
-                <a href="./download.html">Customize</a>
+              <li class="{{download}}">
+                <a href="./download.html">{{_i}}Customize{{/i}}</a>
               </li>
-              <li class="">
-                <a href="./examples.html">Examples</a>
+              <li class="{{examples}}">
+                <a href="./examples.html">{{_i}}Examples{{/i}}</a>
               </li>
             </ul>
           </div>
@@ -74,73 +74,8 @@
 
     <div class="container">
 
-<!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-  <h1>Go from design zero to design hero in seconds.</h1>
-  <p>
-    Bootpolish is a tiny Javascript drop-in that lets you customise your Bootstrap site live in the browser.
-  </p>
-</div>
+{{>body}}
 
-<div class="row">
-  <div class="span3">
-    <h2>Try it now!</h2>
-     <p>
-      This site is not just a brilliantly-written landing page - it's a live demonstration!
-     </p>
-     <p>
-      Click the <strong>&raquo;</strong> icon at the top left or the 'Try Now' button to see what Bootpolish can do.
-     </p>
-  </div>
-
-  <div class="span9">
-      <h2>Why Bootpolish?</h2>
-      <div class="row">
-        <div class="span3">
-          <h4>                  
-            <i class="icon-time"></i>
-            Save time
-          </h4>
-          <p>                  
-            Bootpolish allows you to give your Bootstrapped site its own personality and branding, without
-            wasting time on the Editor &rarr; Compiler &rarr; Browser &rarr; Editor cycle.
-          </p>
-        </div>
-
-        <div class="span3">
-          <h4>
-            <i class="icon-eye-open"></i>
-            Watch live
-          </h4>
-          <p>
-            Because Bootpolish is browser-based, anyone can get instantaneous feedback on changes - regardless
-            of design or coding skills.
-          </p>
-        </div>
-
-        <div class="span3">
-          <h4>
-            <i class="icon-file"></i>
-            Start afresh or tweak out
-          </h4>
-          <p>
-            You can use Bootpolish to generate a completely new Bootstrap project with customised settings, or
-            drop it into your existing site to adjust what you've already done.
-          </p>
-        </div>
-      </div>
- </div>
-</div>
-
-<div class="row">        
-  <div class="span3">
-    <button type="button" class="btn btn-large btn-success" onclick="bootpolish.toggle();">Try Now</button>
-  </div>
-
-  <div class="span9">
-    <a href="/about.html" class="btn btn-large btn-primary">Get Started with Bootpolish</a>
-  </div>
-</div>
 
      <!-- Footer
       ================================================== -->
@@ -269,6 +204,10 @@
       $(document).ready(bootpolish.start({}));
     </script>
 
+    {{#production}}
+    <!-- Analytics
+    ================================================== -->
+    {{/production}}
 
   </body>
 </html>
