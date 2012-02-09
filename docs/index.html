@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Bootpolish: Adjust your Bootstrap theme in real-time.</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -13,6 +12,7 @@
     <![endif]-->
 
     <!-- Le styles -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootpolish.css" />
     <link rel="stylesheet/less" href="assets/less/bootstrap.less" />
     <script type="text/javascript" src="assets/js/less-1.2.1.min.js"></script>
 
@@ -33,50 +33,93 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Bootpolish</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="/index.html">Overview</a></li>
+              <li><a href="/about.html">About</a></li>
+              <li><a href="/contact.html">Custom</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding-top: 60px;">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <h1>Go from design zero to design hero in seconds.</h1>
+        <p>
+          Bootpolish is a tiny Javascript drop-in that lets you customise your Bootstrap site live in the browser.
+        </p>
       </div>
 
-      <!-- Example row of columns -->
       <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+        <div class="span3">
+          <h2>Try it now!</h2>
+           <p>
+            This site is not just a brilliantly-written landing page - it's a live demonstration!
+           </p>
+           <p>
+            Click the <strong>&raquo;</strong> icon to open the Bootpolish widget and see what it can do.
+           </p>
         </div>
-        <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+
+        <div class="span9">
+            <h2>Why Bootpolish?</h2>
+            <div class="row">
+              <div class="span3">
+                <h4>                  
+                  <i class="icon-time"></i>
+                  Save time
+                </h4>
+                <p>                  
+                  Bootpolish allows you to give your Bootstrapped site its own personality and branding, without
+                  wasting time on the LESS - Compilation - Browser Refresh - LESS cycle.
+                </p>
+              </div>
+
+              <div class="span3">
+                <h4>
+                  <i class="icon-eye-open"></i>
+                  Watch live
+                </h4>
+                <p>
+                  Because Bootpolish is browser-based, anyone can get instantaneous feedback on changes - regardless
+                  of design or coding skills.
+                </p>
+              </div>
+
+              <div class="span3">
+                <h4>
+                  <i class="icon-refresh"></i>
+                  Start afresh or start tweaking
+                </h4>
+                <p>
+                  You can use Bootpolish to generate a completely new Bootstrap project with your customised settings, or
+                  drop it into your existing site to adjust what you've already done.
+                </p>
+              </div>
+            </div>
        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+      </div>
+
+      <div class="row">        
+        <div class="span3">
+          <button type="button" class="btn btn-large btn-success" onclick="bootpolish.toggle();">Try Now</button>
+        </div>
+
+        <div class="span9">
+          <a href="/about.html" class="btn btn-large btn-primary">Get Started with Bootpolish</a>
         </div>
       </div>
 
       <hr>
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; 2012. Created by <a href="http://twitter.com/gavinballard">@gavinballard</a>, with thanks to <a href="http://twitter.com/mdo">@mdo</a> and <a href="http://twitter.com/fat">@fat</a> for their work with Bootstrap.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
       </footer>
 
     </div> <!-- /container -->
@@ -84,7 +127,7 @@
 
     <div id="bootpolish-widget" class="modal">
       <div class="modal-header">
-        <a class="close">&laquo;</a>
+        <a class="close"></a>
         <h3>Bootpolish</h3>
       </div>
       <div class="modal-body accordion">
@@ -189,7 +232,11 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/bootpolish.js"></script>    
+    <script src="assets/js/bootpolish.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(bootpolish.start({}));
+    </script>
 
   </body>
 </html>
