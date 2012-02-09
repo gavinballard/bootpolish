@@ -8,44 +8,21 @@
 	/**
 	 * Initialise Bootpolish.
 	 */
-	bootpolish.initialise = function() {
-		var widget = $('#bootpolish-widget').css({
-			position: 	'fixed',
-			top: 		'50px',
-			left: 		'10px',
-			width: 		'350px',
-			maxHeight: 	'600px',
-			margin: 	0
-		});
+	bootpolish.start = function(options) {
+		bootpolish.widget = $('#bootpolish-widget');
 
-		// Set properties on the modal body.
-		widget.find('.modal-body').css({
-			maxHeight: 		'430px',
-			overflow: 		'auto',
-			marginBottom: 	0
-		});
+		// Add click listener to the toggler.
+		bootpolish.widget.find('a.close:first').click(bootpolish.toggle);
 
-		// Set open / close functions.
-		widget.find('a.close:first').click(function(event) {
-			// Close.
-			if(this.innerHTML == '«') {
-				bootpolish.widget.css({
-					left: 		'-310px',
-					opacity: 	0.25
-				}).find('.modal-body,.modal-footer').hide();
-				this.innerHTML = '»';
-				return;
-			}
+		// Open the widget if set.
+		if(options.startOpen) {
+			bootpolish.toggle();
+		}
+	};
 
-			bootpolish.widget.css({
-				left: 			'30px',
-				opacity: 		1.0
-			}).find('.modal-body,.modal-footer').show();
-			this.innerHTML = '«';
-		});
-
-		// Attach the widget to the 
-		bootpolish.widget = widget;
+	// Toggle the widget open or closed.
+	bootpolish.toggle = function() {
+		bootpolish.widget.toggleClass('open');
 	};
 
 	/**
@@ -63,9 +40,6 @@
 	// Add bootpolish to window object.
 	window.bootpolish = bootpolish;
 })(window, window.jQuery, window.less);
-
-// Initialise bootpolish on document ready.
-$(document).ready(bootpolish.initialise);
 
 /**
 var bslive = (function(less) {

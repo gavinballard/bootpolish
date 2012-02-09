@@ -1,0 +1,42 @@
+/**
+ * bootpolish.css
+ * Styles for the Bootpolish widget.
+ */
+
+#bootpolish-widget {
+	margin: 	0;
+	top: 		60px;
+	left:		-270px;
+	width: 		300px;
+	opacity:	0.25;
+}
+
+#bootpolish-widget .close:before {
+	content: "\00bb";
+}
+
+#bootpolish-widget > .modal-body {
+	max-height:		300px;
+	overflow:		auto;
+	margin-bottom: 	0;
+	display: 		none;
+}
+
+#bootpolish-widget > .modal-footer {
+	display:		none;
+}
+
+/* 'Open' widget. */
+#bootpolish-widget.open {	
+	left: 		20px;
+	opacity:	1.0;
+}
+
+#bootpolish-widget.open > .modal-body,
+#bootpolish-widget.open > .modal-footer {
+	display: block;
+}
+
+#bootpolish-widget.open .close:before {
+	content: "\00ab";
+}
