@@ -1,0 +1,31 @@
+/**
+ * docs.css
+ * CSS specific to the docs page.
+ */
+
+#trynow-arrows {
+	position: 	absolute;
+	top: 		80px;
+	left: 		0px;
+	width: 		484px;
+	height: 	480px;
+	z-index:	-1;
+
+	background-image: url(../img/arrow.png);
+	
+	-webkit-transition: opacity 0.4s linear;
+	   -moz-transition: opacity 0.4s linear;
+	     -o-transition: opacity 0.4s linear;
+	        transition: opacity 0.4s linear;
+}
+
+.docs-container {
+	background-color: 	white;
+	-webkit-box-shadow: -10px 0 5px 0px white;
+     -moz-box-shadow:   -10px 0 5px 0px white;
+          box-shadow:   -10px 0 5px 0px white;
+}
+
+#bootpolish-widget.open + #trynow-arrows {
+	opacity: 0;
+}
