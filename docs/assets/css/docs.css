@@ -29,3 +29,7 @@
 #bootpolish-widget.open + #trynow-arrows {
 	opacity: 0;
 }
+
+body > .container {
+	padding-top:	60px;
+}
