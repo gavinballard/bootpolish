@@ -10,26 +10,27 @@
 	width: 		484px;
 	height: 	480px;
 	z-index:	-1;
+	opacity:	0;
 
 	background-image: url(../img/arrow.png);
 	
 	-webkit-transition: opacity 0.4s linear;
 	   -moz-transition: opacity 0.4s linear;
+	    -ms-transition: opacity 0.4s linear;
 	     -o-transition: opacity 0.4s linear;
 	        transition: opacity 0.4s linear;
 }
 
-.docs-container {
-	background-color: 	white;
-	-webkit-box-shadow: -10px 0 5px 0px white;
-     -moz-box-shadow:   -10px 0 5px 0px white;
-          box-shadow:   -10px 0 5px 0px white;
-}
-
-#bootpolish-widget.open + #trynow-arrows {
-	opacity: 0;
+#bootpolish-widget.closed + #trynow-arrows {	
+	opacity:		1.0;
 }
 
 body > .container {
-	padding-top:	60px;
+	padding-top:		60px;
+	background-color: 	white;
+	-webkit-box-shadow: -10px 0 5px 0px white;
+       -moz-box-shadow: -10px 0 5px 0px white;
+        -ms-box-shadow: -10px 0 5px 0px white;
+         -o-box-shadow: -10px 0 5px 0px white;
+            box-shadow: -10px 0 5px 0px white;
 }

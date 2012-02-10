@@ -11,8 +11,8 @@
 	bootpolish.start = function(options) {
 		bootpolish.widget = $('#bootpolish-widget');
 
-		// Add click listener to the toggler.
-		bootpolish.widget.find('a.close:first').click(bootpolish.toggle);
+		// Add click listener to the header.
+		bootpolish.widget.find('.modal-header').click(bootpolish.toggle);
 
 		// Open the widget if set.
 		if(options.startOpen) {
@@ -22,7 +22,7 @@
 
 	// Toggle the widget open or closed.
 	bootpolish.toggle = function() {
-		bootpolish.widget.toggleClass('open');
+		bootpolish.widget.toggleClass('closed');
 	};
 
 	/**
