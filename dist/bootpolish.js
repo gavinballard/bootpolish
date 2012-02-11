@@ -9,15 +9,31 @@
 	 * Initialise Bootpolish.
 	 */
 	bootpolish.start = function(options) {
-		bootpolish.widget = $('#bootpolish-widget');
 
-		// Add click listener to the header.
-		bootpolish.widget.find('.modal-header').click(bootpolish.toggle);
+		// Store options.
+		this.options = options;
 
-		// Open the widget if set.
-		if(options.startOpen) {
-			bootpolish.toggle();
-		}
+		// Load hogan/js template renderer.
+		$.getScript('http://twitter.github.com/hogan.js/builds/1.0.5/template-1.0.5.min.js', function() {
+
+			// Load templates.
+			this.loadTemplates(bootpolish);
+
+			// Load CSS into head.
+			$('head').append(this.templates.css.render());
+
+			// Render the widget.
+			this.widget = $(this.templates.widget.render({}));
+			$('body').append(this.widget);
+
+			// Set listener on widget header.
+			bootpolish.widget.find('.modal-header').click(bootpolish.toggle);
+
+			// Open the widget if set.
+			if(this.options.startOpen) {
+				bootpolish.toggle();
+			}	
+		}.bind(this));
 	};
 
 	// Toggle the widget open or closed.
@@ -156,4 +172,11 @@ var bslive = (function(less) {
 
 // Trigger initialisation.
 bslive.initialise();
-**/
+**/bootpolish.loadTemplates = function(bootpolish) {
+var templates = {};
+templates.css = new Hogan.Template(function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "<style type=\"text/css\">";b += "\n" + i;b += "	#bootpolish-widget {";b += "\n" + i;b += "		margin: 	0;";b += "\n" + i;b += "		top: 		60px;	";b += "\n" + i;b += "		width: 		300px;";b += "\n" + i;b += "		left: 		20px;";b += "\n" + i;b += "		opacity:	1.0;";b += "\n" + i;b += "	}";b += "\n" + i;b += "\n" + i;b += "	#bootpolish-widget .close {";b += "\n" + i;b += "		opacity:	1.0;";b += "\n" + i;b += "		margin-top:	5px;";b += "\n" + i;b += "	}";b += "\n" + i;b += "\n" + i;b += "	#bootpolish-widget .icon-chevron-right {";b += "\n" + i;b += "		display: none;";b += "\n" + i;b += "	}";b += "\n" + i;b += "\n" + i;b += "	#bootpolish-widget > .modal-header {";b += "\n" + i;b += "		cursor: 	pointer;";b += "\n" + i;b += "	}";b += "\n" + i;b += "\n" + i;b += "	#bootpolish-widget > .modal-body {";b += "\n" + i;b += "		max-height:		300px;";b += "\n" + i;b += "		overflow:		auto;";b += "\n" + i;b += "		margin-bottom: 	0;";b += "\n" + i;b += "	}";b += "\n" + i;b += "\n" + i;b += "\n" + i;b += "	/* 'Closed' widget. */";b += "\n" + i;b += "	#bootpolish-widget.closed {	";b += "\n" + i;b += "		left:		-260px;";b += "\n" + i;b += "		opacity:	0.25;";b += "\n" + i;b += "	}";b += "\n" + i;b += "\n" + i;b += "	#bootpolish-widget.closed .icon-chevron-right { display: inline-block; }";b += "\n" + i;b += "	#bootpolish-widget.closed .icon-chevron-left  { display: none; }";b += "\n" + i;b += "\n" + i;b += "	#bootpolish-widget.closed > .modal-body,";b += "\n" + i;b += "	#bootpolish-widget.closed > .modal-footer {";b += "\n" + i;b += "		display: none;";b += "\n" + i;b += "	}";b += "\n" + i;b += "</style>";return b;;});
+templates.templates = new Hogan.Template(function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "bootpolish.loadTemplates = function(bootpolish) {";return b;;});
+templates.variable_group = new Hogan.Template(function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "<div class=\"accordion-group\">";b += "\n" + i;b += "  <div class=\"accordion-heading\">";b += "\n" + i;b += "    <a class=\"accordion-toggle\" href=\"#\" data-toggle=\"collapse\" data-target=\"#bootpolish-widget-links\" data-parent=\"#bootpolish-widget\">Links</a>";b += "\n" + i;b += "  </div>";b += "\n" + i;b += "  <div class=\"accordion-body collapse in\" id=\"bootpolish-widget-links\">";b += "\n" + i;b += "    <div class=\"accordion-inner\">";b += "\n" + i;b += "      Links";b += "\n" + i;b += "    </div>";b += "\n" + i;b += "  </div>";b += "\n" + i;b += "</div>";return b;;});
+templates.widget = new Hogan.Template(function(c,p,i){i = i || "";var b = i + "";var _ = this;b += "<div id=\"bootpolish-widget\" class=\"modal closed\">";b += "\n" + i;b += "  <div class=\"modal-header\">        ";b += "\n" + i;b += "    <a class=\"close\">";b += "\n" + i;b += "      <i class=\"icon-chevron-right\"></i>";b += "\n" + i;b += "      <i class=\"icon-chevron-left\"></i>";b += "\n" + i;b += "    </a>";b += "\n" + i;b += "    <h3>Bootpolish</h3>";b += "\n" + i;b += "  </div>";b += "\n" + i;b += "\n" + i;b += "  <div class=\"modal-body accordion\">  ";b += "\n" + i;b += "  </div>";b += "\n" + i;b += "\n" + i;b += "  <div class=\"modal-footer\">";b += "\n" + i;b += "    <button class=\"btn btn-large btn-primary\">Generate LESS</button>";b += "\n" + i;b += "    <button class=\"btn btn-large btn-danger\">Reset</button>";b += "\n" + i;b += "  </div>";b += "\n" + i;b += "</div>";return b;;});
+bootpolish.templates = templates;
+};

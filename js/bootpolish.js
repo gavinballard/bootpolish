@@ -9,15 +9,31 @@
 	 * Initialise Bootpolish.
 	 */
 	bootpolish.start = function(options) {
-		bootpolish.widget = $('#bootpolish-widget');
 
-		// Add click listener to the header.
-		bootpolish.widget.find('.modal-header').click(bootpolish.toggle);
+		// Store options.
+		this.options = options;
 
-		// Open the widget if set.
-		if(options.startOpen) {
-			bootpolish.toggle();
-		}
+		// Load hogan/js template renderer.
+		$.getScript('http://twitter.github.com/hogan.js/builds/1.0.5/template-1.0.5.min.js', function() {
+
+			// Load templates.
+			this.loadTemplates(bootpolish);
+
+			// Load CSS into head.
+			$('head').append(this.templates.css.render());
+
+			// Render the widget.
+			this.widget = $(this.templates.widget.render({}));
+			$('body').append(this.widget);
+
+			// Set listener on widget header.
+			bootpolish.widget.find('.modal-header').click(bootpolish.toggle);
+
+			// Open the widget if set.
+			if(this.options.startOpen) {
+				bootpolish.toggle();
+			}	
+		}.bind(this));
 	};
 
 	// Toggle the widget open or closed.

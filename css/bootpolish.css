@@ -8,13 +8,8 @@
 	top: 		60px;	
 	width: 		300px;
 	left: 		20px;
+	bottom:		30px;
 	opacity:	1.0;
-
-	-webkit-transition: 0.15s;
-	   -moz-transition: 0.15s;
-	    -ms-transition: 0.15s;
-	     -o-transition: 0.15s;
-	        transition: 0.15s;
 }
 
 #bootpolish-widget .close {
@@ -37,15 +32,8 @@
 
 /* 'Closed' widget. */
 #bootpolish-widget.closed {	
-	left:		-240px;
-	top:		5px;
+	left:		-260px;
 	opacity:	0.25;
-	   
-	-webkit-transform: rotate(30deg);	
-	   -moz-transform: rotate(30deg);
-	    -ms-transform: rotate(30deg);
-	     -o-transform: rotate(30deg);
-	        transform: rotate(30deg);
 }
 
 #bootpolish-widget.closed .icon-chevron-right { display: inline-block; }
