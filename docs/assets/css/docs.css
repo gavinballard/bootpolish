@@ -23,9 +23,9 @@
 body > .container {
 	padding-top:		60px;
 	background-color: 	white;
-	-webkit-box-shadow: -10px 0 5px 0px white;
-       -moz-box-shadow: -10px 0 5px 0px white;
-        -ms-box-shadow: -10px 0 5px 0px white;
-         -o-box-shadow: -10px 0 5px 0px white;
-            box-shadow: -10px 0 5px 0px white;
+	-webkit-box-shadow: -15px 0 10px 0px white;
+       -moz-box-shadow: -15px 0 10px 0px white;
+        -ms-box-shadow: -15px 0 10px 0px white;
+         -o-box-shadow: -15px 0 10px 0px white;
+            box-shadow: -15px 0 10px 0px white;
 }
