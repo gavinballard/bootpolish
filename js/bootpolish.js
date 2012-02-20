@@ -5,6 +5,68 @@
 
 	var bootpolish = {};
 
+	// Event callback for input change event.
+	function changed(event) {
+
+		var element 	= event.target,
+			variable 	= element.getAttribute('data-variable'),
+			type 		= element.getAttribute('data-type'),
+			value  		= element.value;
+
+		bootpolish.set(variable, value);
+	};
+
+	// Fetch a hash of parsed LESS variables and their CSS values.
+	// Overrides any existing value in the given variables hash.
+	function readVariables(variables) {
+
+		// Iterate through each parsed sheet.
+		less.sheets.forEach(function(sheet) {
+			var href = less.extractId(sheet.href);
+
+			var sheetVariables = less.parsed[href] ? less.parsed[href]._variableHash : {};
+
+			// Attempt to get the CSS value of each variable.			
+			for(sheetVariable in sheetVariables) {
+				try {
+					var value = sheetVariables[sheetVariable].value.toCSS({compress: true});
+
+					// See if we know about this variable.
+					if(variables[sheetVariable]) {
+						variables[sheetVariable].value = value;
+					} else {
+						// Create a new custom variable.
+						variables[sheetVariable] = {
+							name: 	sheetVariable,
+							group: 	'custom',
+							text: 	true
+						};
+					}
+
+				} catch(e) {
+					// For the moment, ignore derived variables.
+				}
+			}
+		}, this);
+
+		return variables;
+	};
+
+	// Group variables.
+	function groupVariables(groups, variables) {
+		for(variable in variables) {
+			var matched = false;
+			groups.forEach(function(group) {
+				if(!matched && (group.name === 'custom' || group.name === variables[variable].group)) {
+					group.variables.push(variables[variable]);
+					matched = true;
+				}
+			}, this);
+		}
+
+		return groups;
+	};
+
 	/**
 	 * Initialise Bootpolish.
 	 */
@@ -13,27 +75,37 @@
 		// Store options.
 		this.options = options;
 
-		// Load hogan/js template renderer.
-		$.getScript('http://twitter.github.com/hogan.js/builds/1.0.5/template-1.0.5.min.js', function() {
+		// Load templates.
+		this.loadTemplates(bootpolish);
 
-			// Load templates.
-			this.loadTemplates(bootpolish);
+		// Load CSS into head.
+		$('head').append(this.templates.css.render());
 
-			// Load CSS into head.
-			$('head').append(this.templates.css.render());
+		// Read and overwrite variables
+		this.variables = readVariables(this.variables);
 
-			// Render the widget.
-			this.widget = $(this.templates.widget.render({}));
-			$('body').append(this.widget);
+		// Group variables.
+		var grouped = groupVariables(this.groups, this.variables);
+		
+		// Render the widget.
+		var widget = $(this.templates.widget.render({
+			groups: grouped
+		}, this.templates));
+		$('body').append(widget);
 
-			// Set listener on widget header.
-			bootpolish.widget.find('.modal-header').click(bootpolish.toggle);
+		// Set listener on widget header.
+		widget.find('.modal-header').click(bootpolish.toggle);
 
-			// Open the widget if set.
-			if(this.options.startOpen) {
-				bootpolish.toggle();
-			}	
-		}.bind(this));
+		// Set listeners for variable inputs.
+		$('body').on('change', 'input[data-variable]', changed);
+
+		// Attach the widget
+		bootpolish.widget = widget;
+
+		// Open the widget if set.
+		if(this.options.startOpen) {
+			bootpolish.toggle();
+		}
 	};
 
 	// Toggle the widget open or closed.
@@ -58,61 +130,7 @@
 })(window, window.jQuery, window.less);
 
 /**
-var bslive = (function(less) {
 
-	function getSheetVariables(sheetHrefId) {
-		if(!less.parsed.hasOwnProperty(sheetHrefId)) {
-			return {};
-		}
-		return less.parsed[sheetHrefId]._variableHash;
-	}
-
-	function renderWidget(widget, sheetMap) {
-		var html = '';
-
-		for(sheet in sheetMap) {
-			html += renderSheet(sheet, sheetMap);
-		}
-
-		widget.innerHTML = html;
-	}
-
-	function renderSheet(sheet, sheetMap) {
-		var html = '';
-
-		// Strip sheet name
-		var sheetName = sheet.substring(sheet.lastIndexOf('/'));
-		html += '<h3 onclick="bslive.headerClicked(this);">' + sheetName + '</h3>';
-		html += '<form id="' + sheetName + '_form">';
-		for(variable in sheetMap[sheet]) {
-			html += renderVariable(sheet, variable, sheetMap[sheet]);
-		}
-		html += '</form>';
-		return html;
-	}
-
-	function renderVariable(sheet, variable, variableMap) {
-
-		// Dirty type detection
-		var value = variableMap[variable];
-		var type  = '';
-		var cssClass = '';
-		if(value.substring(0,1) == '#') {
-			type = 'colour';
-			cssClass += 'color {hash:true,adjust:false}';
-		}
-
-		var html = '';
-		html += '<label>' + variable + '</label>';
-		html += '<input type="text" ';
-		html += 'class="' + cssClass + '" ';
-		html += 'value=\'' + variableMap[variable] + '\' ';
-		html += 'data-bsl-variable=\'' + variable + '\' ';
-		html += 'data-bsl-type=\'' + type + '\' ';
-		html += 'data-bsl-sheet="' + sheet + '" ';
-		html += 'onchange="bslive.inputChanged(this);" \/>';
-		return html;
-	}
 
 	return {
 
