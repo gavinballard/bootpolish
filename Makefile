@@ -2,10 +2,8 @@
 # Compile and minify JS and CSS and copy to docs.
 # Requires uglifyjs.
 bootpolish: template
-	cat js/bootpolish.js js/bootpolish-variables.js js/bootpolish-hogan.js templates/templates.js > dist/bootpolish.js
-	cp lib/less.js/less-1.2.1.js dist/less-1.2.1.js
+	cat lib/less.js/less-1.2.1.js js/bootpolish.js js/bootpolish-variables.js js/bootpolish-hogan.js templates/templates.js > dist/bootpolish.js
 	uglifyjs -nc dist/bootpolish.js > dist/bootpolish.min.js
-	uglifyjs -nc dist/less-1.2.1.js > dist/less-1.2.1.min.js
 	mkdir -p docs/assets/js
 	cp dist/*min.js docs/assets/js
 	rm templates/templates.js*
