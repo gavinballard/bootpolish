@@ -1,0 +1,31 @@
+/**
+ * docs.css
+ * CSS specific to the docs page.
+ */
+
+#trynow-arrows {
+	position: 	fixed;
+	top: 		70px;
+	left: 		0px;
+	width: 		484px;
+	height: 	480px;
+	z-index:	-1;
+
+	background-image: url(../img/arrow.png);
+	
+	-webkit-transition: opacity 0.4s linear;
+	   -moz-transition: opacity 0.4s linear;
+	    -ms-transition: opacity 0.4s linear;
+	     -o-transition: opacity 0.4s linear;
+	        transition: opacity 0.4s linear;
+}
+
+body > .container {
+	padding-top:		60px;
+	background-color: 	white;
+	-webkit-box-shadow: -15px 0 10px 0px white;
+       -moz-box-shadow: -15px 0 10px 0px white;
+        -ms-box-shadow: -15px 0 10px 0px white;
+         -o-box-shadow: -15px 0 10px 0px white;
+            box-shadow: -15px 0 10px 0px white;
+}
